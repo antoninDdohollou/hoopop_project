@@ -27,6 +27,7 @@
 
 <script>
 import json from '../../products.json'
+
 export default {
     name: 'cart',
     props: {

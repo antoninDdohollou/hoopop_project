@@ -2,7 +2,8 @@
     <div class="container py-5">
         <div class="row text-center text-white mb-5">
             <div class="col-lg-7 mx-auto">
-                <h1 class="display-4">Product List</h1>
+                <h1>{{$store.state.products.length}}</h1>
+                <h1 class="display-4">Caen'tasoif</h1>
             </div>
         </div>
         <div class="row">
@@ -17,7 +18,9 @@
                                 </div>
                             </div>
                             <img :src="data.productPicture" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                            <button type="button" class="btn btn-primary ml-lg-5 order-1 order-lg-2" @click="cart()">ajouter au panier</button>
+                            <button type="button" class="btn btn-primary ml-lg-5 order-1 order-lg-2" @click="addProductToCart(data)">ajouter au panier</button>
+                            <!-- <router-link class="btn btn-primary ml-lg-5 order-1 order-lg-2" :to="{ name: 'cart', params: {productId: data.productId } }" tag="button">ajouter au panier</router-link> -->
+                            
                         </div>
                     </li>
                 </ul>
@@ -28,6 +31,7 @@
 
 <script>
 import json from '../../products.json'
+
 export default {
     name: 'products',
     props: {
@@ -38,8 +42,8 @@ export default {
         }
     },
     methods:{
-        cart(){
-            this.$router.push('./cart.vue'); 
+        addProductToCart (product) {
+            this.$store.dispatch('addproductToCart', product)
         }
         
     }
@@ -54,9 +58,7 @@ body {
     min-height: 100vh
 }
 
-.text-gray {
-    color: #aaa
-}
+
 
 img {
     height: 170px;
