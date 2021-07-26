@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto"  v-for="data in productsList" v-bind:key="data.productId">
+            <div class="col-lg-8 mx-auto"  v-for="data in $store.state.products" v-bind:key="data.productId">
                 <ul class="list-group shadow">
                     <li class="list-group-item">
                         <div class="media align-items-lg-center flex-column flex-lg-row p-3">
@@ -14,6 +14,7 @@
                                 <h5 class="mt-0 font-weight-bold mb-2">{{data.productName}}</h5>
                                 <div class="d-flex align-items-center justify-content-between mt-1">
                                     <h6 class="font-weight-bold my-2">{{data.productPrice}}</h6>
+                                    <h6 class="font-weight-bold my-2">{{data.quantity}}</h6>
                                 </div>
                             </div>
                             <img :src="data.productPicture" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
@@ -26,17 +27,19 @@
 </template>
 
 <script>
-import json from '../../products.json'
+//import json from '../../products.json'
 
 export default {
     name: 'cart',
     props: {
     },
-    data(){
-        return{
-            productsList: json
-        }
-    }
+
+    // data(){
+    //     return{
+    //         productsList: json
+    //     }
+    // },
+
 }
 
 </script>
@@ -48,9 +51,6 @@ body {
     min-height: 100vh
 }
 
-.text-gray {
-    color: #aaa
-}
 
 img {
     height: 170px;
